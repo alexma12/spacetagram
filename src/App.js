@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { ReactComponent as HeartIcon } from "./svg/heart-outline.svg";
+import { ReactComponent as HomeIcon } from "./svg/home-outline.svg";
+import { ReactComponent as NotificationIcon } from "./svg/notifications-outline.svg";
+import logo from "./profilepic.jpg";
+import "./App.scss";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Navbar">
+        <div className="Navbar-title"> Spacetgram </div>
+        <div className="Navbar-buttons">
+          <HomeIcon className="Navbar-button Navbar-button-filled" />
+          <NotificationIcon className="Navbar-button" />
+          <HeartIcon className="Navbar-button" />
+          <img src={logo} className="Navbar-avatar" />
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
