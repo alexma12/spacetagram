@@ -16,11 +16,10 @@ const App = () => {
   let cardComponents;
   if (error === null && response !== null) {
     cardComponents = response.data.map(
-      ({ hdurl, date, copyright, explanation, title }) => (
+      ({ hdurl, copyright, explanation, title }) => (
         <CardComponent
           img={hdurl}
           title={title}
-          date={date}
           copyright={copyright}
           explanation={explanation}
         />

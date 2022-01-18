@@ -65,11 +65,12 @@
 }
 
 .CardComponent {
-  background-color: $alabaster;
+  background-color: rgba($alabaster, 0.9);
   margin: 2rem;
   padding: 2rem;
   border-radius: 0.4rem;
   width: 40rem;
+  box-shadow: 0.5rem 0.5rem 0.4rem rgba($platinum, 0.7);
   &-box {
     margin-top: 15rem;
     margin-left: 40rem;
@@ -77,6 +78,30 @@
     display: grid;
     grid-template-columns: 50% 50%;
   }
+
+  &-header {
+    display: grid;
+    grid-template-columns: 93% 7%;
+    margin-bottom: 1.2rem;
+  }
+
+  &-info {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  &-likeIcon {
+    height: 3rem;
+    width: 3rem;
+    transform: translateY(-0.7rem);
+    path {
+      fill: $platinum;
+    }
+  }
+
+  &-copyright {
+    text-align: right;
+  }
+
   &-title {
     text-align: left;
     font-weight: 500;
@@ -85,7 +110,8 @@
   }
 
   &-explanation {
-    margin-top: 1rem;
+    margin-top: 1.2rem;
+    font-size: 1.2rem;
   }
   &-img {
     height: 40rem;
