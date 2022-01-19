@@ -131,6 +131,12 @@
   top: 20rem;
   left: 14rem;
 
+  &-title {
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
   .react-datepicker {
     font-family: "Fira Code", sans-serif;
     font-size: 1.5rem;

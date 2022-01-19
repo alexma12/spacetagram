@@ -53,25 +53,6 @@ const App = () => {
     [isAllDataFetched, isLoading]
   );
 
-  let cardComponents = (data || []).map(
-    ({ hdurl, copyright, explanation, title, date }, index) => {
-      let refProp = null;
-      if (index === data.length - 1) {
-        refProp = lastCardComponent;
-      }
-      return (
-        <CardComponent
-          refProp={refProp}
-          date={date}
-          img={hdurl}
-          title={title}
-          copyright={copyright}
-          explanation={explanation}
-        />
-      );
-    }
-  );
-
   return (
     <div className="App">
       <div className="Navbar">
@@ -84,13 +65,35 @@ const App = () => {
         </div>
       </div>
       <div className="Datepicker">
+        <div className="Datepicker-title">
+          Select A Start Date To Query From
+        </div>
         <DatePicker
           open
           selected={selectedDate}
           onChange={setSelectedDateHandler}
         />
       </div>
-      <div className="CardComponent-box">{cardComponents}</div>
+      <div className="CardComponent-box">
+        {(data || []).map(
+          ({ hdurl, copyright, explanation, title, date }, index) => {
+            let refProp = null;
+            if (index === data.length - 1) {
+              refProp = lastCardComponent;
+            }
+            return (
+              <CardComponent
+                refProp={refProp}
+                date={date}
+                img={hdurl}
+                title={title}
+                copyright={copyright}
+                explanation={explanation}
+              />
+            );
+          }
+        )}
+      </div>
     </div>
   );
 };
