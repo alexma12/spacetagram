@@ -4,6 +4,8 @@
   font-family: "Fira Code", sans-serif;
   font-size: 1rem;
   color: $grayfont;
+  display: grid;
+  grid-template-columns: 27% 60% 1fr;
   position: relative;
 }
 
@@ -72,9 +74,8 @@
   width: 40rem;
   box-shadow: 0.5rem 0.5rem 0.4rem rgba($platinum, 0.7);
   &-box {
+    grid-column: 2;
     margin-top: 15rem;
-    margin-left: 40rem;
-    margin-right: 40rem;
     display: grid;
     grid-template-columns: 50% 50%;
   }
@@ -111,11 +112,101 @@
 
   &-explanation {
     margin-top: 1.2rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   &-img {
     height: 40rem;
     width: 40rem;
     border-radius: 0.4rem;
+  }
+}
+
+.Datepicker {
+  position: fixed;
+  top: 20rem;
+  left: 14rem;
+
+  .react-datepicker {
+    font-family: "Fira Code", sans-serif;
+    font-size: 1.5rem;
+    border-radius: 0.4rem;
+    border: solid $platinum 0.12rem;
+  }
+
+  .react-datepicker__current-month {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .react-datepicker__navigation--previous {
+    left: 1rem;
+    &:focus {
+      outline: none;
+    }
+  }
+  .react-datepicker__navigation--next {
+    right: 1rem;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .react-datepicker__navigation {
+    top: 0.7em;
+    line-height: 1.7em;
+    border: 0.45em solid transparent;
+  }
+
+  .react-datepicker__triangle {
+    display: none;
+  }
+
+  .react-datepicker__header {
+    background-color: rgba($champagnepink, 0.95);
+    padding: 1.4rem 1rem;
+    border-bottom: solid $platinum 0.1rem;
+  }
+
+  .react-datepicker__month {
+    margin: 1rem;
+  }
+
+  .react-datepicker__day-name,
+  .react-datepicker__day {
+    width: 3.2rem;
+    line-height: 2.6rem;
+    margin: 0.166rem;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .react-datepicker__day--keyboard-selected {
+    background-color: white;
+    color: black;
+    &:hover {
+      background-color: white;
+    }
+  }
+  .react-datepicker__day--selected {
+    background-color: $alabaster;
+    color: black;
+    &:hover {
+      background-color: $alabaster;
+    }
+  }
+  .react-datepicker__input-container {
+    input {
+      font-family: "Fira Code", sans-serif;
+      font-size: 1.9rem;
+      border: none;
+      border-bottom: solid $platinum 0.2rem;
+      width: 26.5rem;
+      margin-bottom: 1.2rem;
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }

@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useAxiosRequest = ({ method, url, data = null, headers = null }) => {
+const useAxiosRequest = (
+  { method, url, data = null, headers = null },
+  dependencies
+) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
 
@@ -18,7 +21,7 @@ const useAxiosRequest = ({ method, url, data = null, headers = null }) => {
       .catch((error) => {
         setError(error);
       });
-  }, []);
+  }, [...dependencies]);
 
   return [response, error];
 };
