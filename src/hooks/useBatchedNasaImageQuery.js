@@ -55,7 +55,7 @@ const useBatchedNasaImageQuery = (startDate, currBatch, batchSize = 7) => {
           } else if (response.data) {
             setData((prevData) => prevData.concat([response.data]));
           }
-          if (dateComparison(modifiedEndDate, new Date())) {
+          if (dateComparison(modifiedEndDate, new Date(), "equal")) {
             setIsAllDataFetched(true);
           }
         })

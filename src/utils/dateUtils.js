@@ -1,7 +1,7 @@
 import moment from "moment";
 
 const getStartOfDate = (date) => {
-  return new Date(date).setHours(0, 0, 0, 0);
+  return moment(date).startOf("day");
 };
 export const nasaAPIDateFormat = (date) => {
   return moment(date).format("YYYY-MM-DD");

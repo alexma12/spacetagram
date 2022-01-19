@@ -8,6 +8,7 @@ const CardComponent = ({
   copyright = null,
   explanation,
   refProp,
+  date,
 }) => {
   let copyrightComponent = null;
   if (copyright !== null) {
@@ -22,8 +23,9 @@ const CardComponent = ({
       <div className="CardComponent-header">
         <div className="CardComponent-title">{title}</div>
         <HeartIcon className="CardComponent-likeIcon" />
+        <div className="CardComponent-date">{date}</div>
       </div>
-      <img className="CardComponent-img" src={img} alt="nasa-img" />
+      <img className="CardComponent-img" src={img} alt="nasa-api-img" />
       {copyrightComponent}
       <div className="CardComponent-explanation"> {explanation}</div>
     </div>
@@ -33,7 +35,9 @@ const CardComponent = ({
 CardComponent.propTypes = {
   img: PropTypes.string,
   title: PropTypes.string,
+  date: PropTypes.string,
   copyright: PropTypes.string,
+  refProp: PropTypes.func,
   explanation: PropTypes.string,
 };
 
