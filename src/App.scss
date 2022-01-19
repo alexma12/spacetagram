@@ -10,6 +10,7 @@
 }
 
 .Navbar {
+  z-index: 2;
   display: grid;
   grid-template-columns: 35% 30% 25% 10%;
   position: fixed;
@@ -94,8 +95,27 @@
     height: 3rem;
     width: 3rem;
     transform: translateY(-0.7rem);
+    transition: 0.2s;
     path {
       fill: $platinum;
+    }
+
+    &:hover {
+      path {
+        fill: rgba($sardoynx-light, 0.8);
+      }
+    }
+
+    &-selected {
+      path {
+        fill: $sardoynx;
+      }
+
+      &:hover {
+        path {
+          fill: rgba($sardoynx, 0.8);
+        }
+      }
     }
   }
 

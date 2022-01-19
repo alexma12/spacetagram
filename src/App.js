@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useMemo } from "react";
 import DatePicker from "react-datepicker";
 import { ReactComponent as HeartIcon } from "./svg/heart-outline.svg";
 import { ReactComponent as HomeIcon } from "./svg/home-outline.svg";
@@ -12,6 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const App = () => {
   const [selectedDate, setSelectedDate] = useState(Date.now());
+  const [likedCards, setLikedCard] = useState([]);
   const [currBatch, setCurrBatch] = useState(0);
 
   const setSelectedDateHandler = (newDate) => {
@@ -20,6 +21,15 @@ const App = () => {
       setCurrBatch(0);
     }
   };
+
+  const likedCardsMap = useMemo(
+    () =>
+      likedCards.reduce((map, curr, i) => {
+        map[likedCards[i]] = true;
+        return map;
+      }, {}),
+    [likedCards]
+  );
 
   const batchSize = 7;
   const [data, isAllDataFetched, isLoading, error] = useBatchedNasaImageQuery(
@@ -53,6 +63,27 @@ const App = () => {
     [isAllDataFetched, isLoading]
   );
 
+  const cardComponents = (data || []).map(
+    ({ hdurl, copyright, explanation, title, date }, index) => {
+      let refProp = null;
+      if (index === data.length - 1) {
+        refProp = lastCardComponent;
+      }
+      return (
+        <CardComponent
+          refProp={refProp}
+          date={date}
+          img={hdurl}
+          title={title}
+          copyright={copyright}
+          explanation={explanation}
+          liked={likedCardsMap[date] === true}
+          setLikedCard={setLikedCard}
+        />
+      );
+    }
+  );
+
   return (
     <div className="App">
       <div className="Navbar">
@@ -74,26 +105,7 @@ const App = () => {
           onChange={setSelectedDateHandler}
         />
       </div>
-      <div className="CardComponent-box">
-        {(data || []).map(
-          ({ hdurl, copyright, explanation, title, date }, index) => {
-            let refProp = null;
-            if (index === data.length - 1) {
-              refProp = lastCardComponent;
-            }
-            return (
-              <CardComponent
-                refProp={refProp}
-                date={date}
-                img={hdurl}
-                title={title}
-                copyright={copyright}
-                explanation={explanation}
-              />
-            );
-          }
-        )}
-      </div>
+      <div className="CardComponent-box">{cardComponents}</div>
     </div>
   );
 };
