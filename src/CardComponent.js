@@ -2,7 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { ReactComponent as HeartIcon } from "./svg/heart-outline.svg";
 
-const CardComponent = ({ img, title, copyright = null, explanation }) => {
+const CardComponent = ({
+  img,
+  title,
+  copyright = null,
+  explanation,
+  refProp,
+}) => {
   let copyrightComponent = null;
   if (copyright !== null) {
     copyrightComponent = (
@@ -12,7 +18,7 @@ const CardComponent = ({ img, title, copyright = null, explanation }) => {
     );
   }
   return (
-    <div className="CardComponent">
+    <div className="CardComponent" ref={refProp}>
       <div className="CardComponent-header">
         <div className="CardComponent-title">{title}</div>
         <HeartIcon className="CardComponent-likeIcon" />
